@@ -1,2 +1,1 @@
 python /usr/local/plotTektronix/plotTektronix.py "$@"
-echo $1

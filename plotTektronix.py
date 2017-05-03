@@ -51,9 +51,12 @@ for f in fileInputs:
     dat = getFileData(f)
     labels = dat.keys()
     labels.remove('time')
+    plt.figure()
     for l in labels:
         plt.plot(dat['time'],dat[l],label=l)
     plt.title(f)
     plt.legend()
-    plt.show()
-    
+    if(not pngOutput):
+        plt.show()
+    else:
+        plt.savefig(f.replace('.csv','.png'))
