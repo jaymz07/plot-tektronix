@@ -52,7 +52,7 @@ def getFileData(fName):
     return dataOut
 
 for f in fileInputs:
-    print('Opening file :' + f + '\n')
+    print('---------------------------------------\nOpening file :' + f + '\n')
     dat = getFileData(f)
     labels = dat.keys()
     labels.remove('time')
@@ -65,5 +65,5 @@ for f in fileInputs:
         plt.show()
     else:
         outFig = f.replace('.csv','.png')
-        print('Saving file to : ' + outFig + '\n')
+        print('Saving file to : ' + outFig)
         plt.savefig(outFig)
