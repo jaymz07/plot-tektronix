@@ -1,1 +1,1 @@
-python /usr/local/plotTektronix/plotTektronix.py "$@"
+python3 /usr/local/plotTektronix/plotTektronix.py "$@"
