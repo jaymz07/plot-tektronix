@@ -94,9 +94,13 @@ for f in fileInputs:
     labels = list(dat.keys())
     labels.remove('time')
     fig, axes = plt.subplots(len(labels),sharex=True)
-    for i in range(0,len(labels)):
-        axes[i].plot(dat['time'],dat[labels[i]],label=labels[i])
-        axes[i].legend()
+    if(not isinstance(axes,np.ndarray)):
+        axes.plot(dat['time'],dat[labels[0]],label=labels[0])
+        axes.legend()
+    else:
+        for i in range(0,len(labels)):
+            axes[i].plot(dat['time'],dat[labels[i]],label=labels[i])
+            axes[i].legend()
     plt.title(f)
     if(not pngOutput):
         plt.show()
