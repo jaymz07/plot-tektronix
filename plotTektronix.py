@@ -27,7 +27,7 @@ for i in range(1,len(sys.argv)):
         print('Dumping data\n')
         dumpMode = 'tab'
     elif(sys.argv[i] == '--help'):
-        print("\nOptions:\n\n-png\n\tWrite directly to png file\n-d\n\tDump directly to tab separated file.\n-c [chunk size]\n\tPlot every [chunk size] points.")
+        print("\nOptions:\n\n-png\n\tWrite directly to png file\n-d\n\tDump directly to tab separated file.\n-c [chunk size]\n\tPlot every [chunk size] points.\n-i\n\tInterpolate time axis. (Sometimes scope does not record enough digits)")
         sys.exit()
     elif(sys.argv[i] == '-i'):
         print("Interpolating time axis")
