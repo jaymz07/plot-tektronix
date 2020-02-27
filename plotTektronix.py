@@ -14,6 +14,7 @@ import sys, os
 fileInputs = []
 pngOutput = False
 dumpMode = None
+interpolateXaxis = False
 
 
 for i in range(1,len(sys.argv)):
@@ -28,7 +29,10 @@ for i in range(1,len(sys.argv)):
     elif(sys.argv[i] == '--help'):
         print("\nOptions:\n\n-png\n\tWrite directly to png file\n-d\n\tDump directly to tab separated file.\n-c [chunk size]\n\tPlot every [chunk size] points.")
         sys.exit()
-    elif(sys.argv[i] not in ['-c','-png','-d']):
+    elif(sys.argv[i] == '-i'):
+        print("Interpolating time axis")
+        interpolateXaxis = True
+    elif(sys.argv[i] not in ['-c','-png','-d','-i']):
         fileInputs.append(sys.argv[i])
 
 #Default file input if run without arguments
@@ -76,6 +80,8 @@ def dumpFileData(data, fName):
 for f in fileInputs:
     print('---------------------------------------\n--> Opening file :' + f )
     dat = getFileData(f)
+    if(interpolateXaxis):
+        dat['time'] = np.linspace(np.min(dat['time']), np.max(dat['time']), len(dat['time']))
     if(dumpMode is not None):
         if(dumpMode == 'tab'):
             ds = f.split('.')
